@@ -124,3 +124,4 @@ while (conter <= 4){
 for (let i =0; i <=4 ; i= i + 1){
     console.log("for:",i);
 }
+
