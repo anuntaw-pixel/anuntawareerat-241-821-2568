@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    ชื่อ: <input  
+    id="fname"
+    type="text" 
+    name="fname" 
+    value="John">
+    นามสกุล: <input
+    id="lname"
+    type="text"
+    name="name"
+    value="Doe">  
+    งานอดิเรก:
+    <input type="checkbox" name="hobby" value="football">Football
+     <input type="checkbox" name="hobby" value="baseketball">Baseketball
+     <input type="checkbox" name="hobby" value="tennis"> Tennis
+    <button onclick="userCliked()" >Submit</button>
+    เพศ:
+    <input type="radio" name="gender" value="male" onchange="onchangeGender()" >ชาย
+    <input type="radio" name="gender" value="female" onchange="onchangeGender()"checked>หญิง
+    <script> 
+       function onchangeGender(){
+        // เลือก Gender  ทุก input ออกมา
+        let genderInpurs = document.querySelectorAll('input[name="gender"]');
+        
+
+        //เช็คว ตัวไหน มี ckeck อยู่ ให้เอา value มาแสดง
+        for(let i=0; i<genderInpurs.length;i++) {
+            if(genderInputs[i].checked){
+                console.log("เพศที่เลือก:"+ genderInputs[i].value);
+            }
+        }   
+        }
+        function userCliked(){
+          console.log("User clicked the button!");
+    }
+        function devCleck(){
+          console.log("Developer clicked the div!");
+    }
+    //
+    let checkbox = document.querySelectorAll('input[name="hobby"]');
+    for(let i=0; i<checkbox.length; i++){
+        console.log(checkbox[i].value);
+    }   
+    // Select DOM
+    const fnameInput = document .getElementsByClassName('input');
+    console.log(fnameInput)
+    for (let i=0; i < fname.length; i++){
+        console.log(fnameInput[i].value);
+    }
+</script>
+
+
+
+</body>
+</html>
