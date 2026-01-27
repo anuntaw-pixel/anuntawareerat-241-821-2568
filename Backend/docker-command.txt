@@ -1,0 +1,25 @@
+docker ps -a แสดง Container ทั้งหมด
+docker run busybox echo "hello world in docker"
+docker run busybox ls #แสดงไฟล์ในโฟลเดอร์
+docker run busybox ping google.com #ตรวจสอบการเชื่อมต่อ
+docker stop CONTAINER_ID หยุด Container ตามด้วย id
+docker pull busybox #pull
+docker create busybox ping google.com #create คำสั่งค้างไว้
+docker start CONTAINER_ID start
+docker rm CONTAINER_ID ลบ CONTAINER
+docker system prune ลบทั้งหมด ลบ CONTAINER ที่ไม่ได้ใช้งาน
+docker run nginx สร้าง Run เว็บไซต์
+docker exec -it CONTAINER_ID sh เข้าไปใน CONTAINER สักที
+docker exec -it CONTAINER_ID bash
+ docker exec - it // 
+ docker run -p 80:80 nginx // พอร์ต 80 ของเครื่องเรา → ต่อไปที่ → พอร์ต 80 ใน container (nginx)
+ docker run -p 9000:80 nginx // พอร์ต 9000 ของเครื่องเรา → ต่อไปที่ → พอร์ต 80 ใน container (nginx)
+docker ps // ดูรายการ Container ที่กำลังรันอยู่
+docker run -d -p 9001:80 nginx //คำสั่ง รันเว็บ nginx แบบรันเบื้องหลัง (background) และเปิดพอร์ตให้เข้าเว็บได้
+// RETRIEVING LOG OUTPUTS ----------------
+docker logs <container> // ดูข้อมูลระบบ Docker ทั้งหมดในเครื่องเรา เช่น
+เวอร์ชัน Docker
+จำนวน Container / Image
+Storage Driver
+OS / CPU / Memory
+📌 ใช้เช็กว่า Docker ทำงานปกติไหม //
