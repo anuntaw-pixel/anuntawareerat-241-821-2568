@@ -1,187 +1,114 @@
-/* 1. นำเข้าฟอนต์ภาษาไทยสวยๆ (Prompt) จาก Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600&display=swap');
-
-/* 2. ตั้งค่าตัวแปรสี (แก้ไขธีมสีได้ที่นี่) */
-:root {
-    --primary-color: #4facfe;       /* สีหลัก (ฟ้าสดใส) */
-    --secondary-color: #00f2fe;     /* สีรอง (ฟ้าอ่อน) */
-    --accent-color: #3b82f6;        /* สีจุดเด่น (เช่น ปุ่มกด) */
-    --text-color: #333333;          /* สีตัวอักษร */
-    --bg-card: #ffffff;             /* สีพื้นหลังการ์ด */
-    --input-bg: #f3f4f6;            /* สีพื้นหลังช่องกรอก */
-    --shadow-color: rgba(0, 0, 0, 0.1);
-}
-
-/* ตั้งค่าพื้นฐาน */
+/* reset เบื้องต้น */
 * {
     box-sizing: border-box;
-    font-family: 'Prompt', sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.message 
+{
+    background-color: beige;
+    padding: 10px;
+    border-radius: 6px;
+    margin-bottom: 15px;
+    display: none;
+}
+
+.message.success
+{
+    background-color: #4CAF50;
+    color: white;
+    display: block;
+}
+
+.message.danger
+{
+    background-color: red;
+    color: white;
+    display: block;
+}
+
+/* จัดกึ่งกลางทั้งหน้า */
+body {
+    background-color: #f2f2f2;
     margin: 0;
     padding: 0;
 }
 
-body {
-    /* พื้นหลังแบบไล่สีเฉียง */
-    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-}
-
-/* กล่องฟอร์มหลัก (Card) */
+/* กล่องฟอร์มหลัก */
 .container {
-    background-color: var(--bg-card);
-    padding: 40px;
-    border-radius: 20px; /* มุมโค้งมน */
-    box-shadow: 0 10px 30px var(--shadow-color); /* เงานุ่มๆ ให้ดูลอย */
-    width: 100%;
-    max-width: 500px; /* ความกว้างสูงสุด */
-    transition: transform 0.3s ease;
+    width: 400px;
+    background-color: #ffffff;
+    margin: 50px auto;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
-/* ส่วนหัวข้อ */
+/* หัวข้อใหญ่ */
 .header {
-    font-size: 1.8rem;
-    font-weight: 600;
+    font-size: 24px;
+    font-weight: bold;
     text-align: center;
-    margin-bottom: 30px;
-    color: var(--accent-color);
-    letter-spacing: 1px;
+    margin-bottom: 20px;
 }
 
-/* การจัดวาง Flexbox */
+/* flex utility */
 .flex {
     display: flex;
     align-items: center;
 }
 
-/* ระยะห่างแต่ละก้อนข้อมูล */
+/* ระยะห่างแต่ละ input */
 .form-input {
-    margin-bottom: 20px;
-    color: var(--text-color);
+    margin-bottom: 15px;
 }
 
-/* ป้ายกำกับ (Label) */
+/* หัวข้อหน้า input */
 .header-form {
-    font-weight: 500;
-    min-width: 100px; /* ล็อคความกว้างเพื่อให้ Input ตรงกัน */
-    color: #555;
+    width: 80px;
+    font-weight: bold;
 }
 
-/* ช่องกรอกข้อมูล (Input Text & Number) */
+/* input ทั่วไป */
 .form {
-    width: 100%;
-    padding: 12px 15px;
-    background-color: var(--input-bg);
-    border: 2px solid transparent;
-    border-radius: 10px;
-    font-size: 1rem;
-    transition: all 0.3s ease;
-    color: var(--text-color);
+    flex: 1;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
 }
 
-/* เอฟเฟกต์ตอนกดช่องกรอก */
-.form:focus {
-    outline: none;
-    background-color: #fff;
-    border-color: var(--accent-color);
-    box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1); /* แสงฟุ้งๆ */
+/* gender section */
+.gender .flex div {
+    margin-right: 10px;
 }
 
-/* ปรับแต่ง Radio และ Checkbox ให้เป็นสีตามธีม */
-input[type="radio"], input[type="checkbox"] {
-    accent-color: var(--accent-color);
-    width: 18px;
-    height: 18px;
-    margin-right: 8px;
-    cursor: pointer;
-    vertical-align: middle;
-}
-
-/* ส่วนเพศ และ ตัวเลือกต่างๆ */
-.gender .flex > div,
-.form-input > div {
-    margin-top: 5px;
-    margin-right: 15px;
-    display: flex;
-    align-items: center;
-    font-size: 0.95rem;
-}
-
-/* Textarea (คำอธิบาย) */
+/* textarea */
 textarea {
     width: 100%;
-    min-height: 100px;
-    padding: 12px;
-    margin-top: 10px;
-    background-color: var(--input-bg);
-    border: 2px solid transparent;
-    border-radius: 10px;
-    resize: vertical;
-    font-size: 1rem;
-    transition: all 0.3s ease;
+    height: 80px;
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    resize: none;
 }
 
-textarea:focus {
-    outline: none;
-    background-color: #fff;
-    border-color: var(--accent-color);
-}
-
-/* จัดปุ่มกึ่งกลาง */
+/* จัดปุ่มตรงกลาง */
 .center {
-    display: flex;
-    justify-content: center;
-    margin-top: 30px;
+    text-align: center;
 }
 
-/* ปุ่มกด (Button) */
+/* ปุ่ม */
 .button {
-    background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+    background-color: #4CAF50;
     color: white;
     border: none;
-    padding: 12px 50px;
-    font-size: 1rem;
-    font-weight: 600;
-    border-radius: 50px; /* ปุ่มแคปซูล */
+    padding: 10px 25px;
+    border-radius: 5px;
     cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
+    font-size: 16px;
 }
 
-/* เอฟเฟกต์ปุ่มตอนเอาเมาส์ชี้ */
+/* hover effect */
 .button:hover {
-    transform: translateY(-2px); /* ลอยขึ้น */
-    box-shadow: 0 6px 20px rgba(59, 130, 246, 0.6);
-}
-
-.button:active {
-    transform: scale(0.98); /* ยุบลงเล็กน้อยตอนกด */
-}
-
-/* --- Responsive: ปรับสำหรับมือถือ --- */
-@media (max-width: 480px) {
-    .container {
-        padding: 25px;
-    }
-    
-    /* เปลี่ยนจากแนวนอนเป็นแนวตั้งเมื่อจอเล็ก */
-    .flex.form-input {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .header-form {
-        margin-bottom: 8px;
-        font-size: 1rem;
-        font-weight: 600;
-    }
-
-    /* จัดส่วนเพศให้ดูดีขึ้นบนมือถือ */
-    .gender .flex {
-        flex-direction: row; /* เพศให้เรียงแนวนอนเหมือนเดิม */
-        flex-wrap: wrap;
-    }
+    background-color: #45a049;
 }
